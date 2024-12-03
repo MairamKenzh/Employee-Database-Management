@@ -1,23 +1,15 @@
-# Employee Database Management System
-## Description
-The Employee Database Management System is a simple Java application that demonstrates CRUD (Create, Read, Update, Delete) operations on an employee database. It integrates a PostgreSQL database with Java using JDBC and follows Object-Oriented Programming (OOP) principles like encapsulation and modularity. The project allows users to create, retrieve, update, and delete employee records.
+Employee Database Management System
+Project Description
+This Java application interacts with a PostgreSQL database to manage employee data using JDBC. It implements CRUD (Create, Read, Update, Delete) operations on an employee table. The application consists of two main classes:
 
-## Instructions on How to Run the Program
-1. Prerequisites
-Java JDK: Ensure Java JDK 17 or higher is installed.
-PostgreSQL: Install and configure PostgreSQL on your system.
-IDE: Use IntelliJ IDEA or any other Java-compatible IDE.
-Maven: If Maven is not installed, download and configure it.
-2. Set Up the Database
-Open pgAdmin or any PostgreSQL client.
-Create the database:
-sql
-create database employee_db;
-Connect to the employee_db database:
-sql
-Копировать код
-\c employee_db;
-Create the employee table:
+Employee: Represents an employee entity.
+EmployeeData: Handles database operations using JDBC.
+The program adheres to Object-Oriented Programming (OOP) principles, ensuring modularity and encapsulation.
+
+Requirements
+Database Setup
+Create a database named employee_db in PostgreSQL.
+Create the employee table by running the following SQL script:
 sql
 Копировать код
 create table employee (
@@ -27,86 +19,98 @@ create table employee (
     salary double precision not null,
     hire_date date not null
 );
-3. Clone the Project
-Download or clone the repository:
+Employee Class
+The Employee class contains the following fields:
 
+id (int): Unique identifier for each employee.
+name (String): Name of the employee.
+position (String): Job title of the employee.
+salary (double): Salary of the employee.
+hireDate (Date): Date the employee was hired.
+The class includes:
+
+Constructors for creating Employee objects.
+Getters and setters for all fields.
+A toString() method for easy display of employee information.
+EmployeeData Class
+This class handles database interactions using JDBC. Key methods include:
+
+createEmployee: Adds a new employee to the database.
+java
+Копировать код
+int createEmployee(String name, String position, double salary, Date hireDate)
+getAllEmployees: Retrieves all employees from the database.
+java
+Копировать код
+ArrayList<Employee> getAllEmployees()
+getEmployeeById: Fetches a single employee by their ID.
+java
+Копировать код
+Employee getEmployeeById(int id)
+updateEmployee: Updates an employee's details.
+java
+Копировать код
+void updateEmployee(int id, String name, String position, double salary, Date hireDate)
+deleteEmployee: Deletes an employee from the database by their ID.
+java
+Копировать код
+void deleteEmployee(int id)
+How to Run the Program
+Clone or download the project:
 bash
-
+Копировать код
 git clone https://github.com/nurjamal505/Employee-Database-Management.git
 cd Employee-Database-Management
-4. Configure Database Credentials
-In the EmployeeData class, update the database connection details:
-
+Open the project in IntelliJ IDEA or another IDE.
+Update the database credentials in EmployeeData:
 java
-
-private static final String URL = "jdbc:postgresql://localhost:5432/employee_db";
-private static final String USER = "your_username"; // Replace with your PostgreSQL username
-private static final String PASSWORD = "your_password"; // Replace with your PostgreSQL password 
-
-5. Run the Project
-Open the project in IntelliJ IDEA or your preferred IDE.
-Build the project:
-bash
 Копировать код
-mvn clean install
-Run the Main class to see the CRUD operations in action.
+String url = "jdbc:postgresql://localhost:5432/employee_db";
+String username = "your_username";
+String password = "your_password";
+Run the Main class.
+Example Workflow
+The Main class demonstrates the following:
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
 
-## Screenshots
-1. Before Running the Program
-Empty database:
-
-sql
+View all employees:
+java
 Копировать код
-select * from employee;
-Output:
-
-scss
+ArrayList<Employee> employees = employeeData.getAllEmployees();
+for (Employee emp : employees) {
+    System.out.println(emp);
+}
+Update an employee:
+java
 Копировать код
-(No rows returned)
-2. After Adding Employees
-Screenshot of the database with new employees added:
-
-sql
+employeeData.updateEmployee(
+    newEmployeeId, "Anna Kay", "Senior Designer", 85000.00, Date.valueOf("2023-12-01")
+);
+Delete an employee:
+java
 Копировать код
-select * from employee;
-Output:
-
+employeeData.deleteEmployee(newEmployeeId);
+Expected Output
+After Adding an Employee:
 arduino
 Копировать код
- id |   name   |       position        |  salary  |  hire_date  
-----+----------+-----------------------+----------+------------
- 1  | Anna Kay | Designer              | 70000.00 | 2024-12-01
-3. After Updating an Employee
-Screenshot of the database after an employee's data is updated:
-
-sql
-Копировать код
-select * from employee;
-Output:
-
+Employee{id=1, name='Anna Kay', position='Designer', salary=70000.0, hireDate=2024-12-01}
+After Updating the Employee:
 arduino
 Копировать код
- id |   name   |          position         |  salary  |  hire_date  
-----+----------+---------------------------+----------+------------
- 1  | Anna Kay | Senior Software Engineer | 85000.00 | 2023-12-01
-4. After Deleting an Employee
-Screenshot of the database after deleting the employee:
-
-sql
-select * from employee;
-Output:
-
-scss
+Employee{id=1, name='Anna Kay', position='Senior Designer', salary=85000.0, hireDate=2023-12-01}
+After Deletion:
+csharp
+Копировать код
+(No records found, the table is empty.)
 Evaluation Criteria
-1. Proper Use of OOP Concepts
-Encapsulation: The Employee class uses private fields with public getters and setters.
-Modularity: The EmployeeData class encapsulates database operations.
-Reusability: Methods are reusable and adhere to OOP principles.
-2. Code Quality
-Naming Conventions: Methods and variables are named meaningfully.
-Comments: Clear comments explain each method and block of code.
-Exception Handling: Database errors are handled using try-catch blocks.
-3. Completeness
-CRUD operations (createEmployee, getAllEmployees, updateEmployee, deleteEmployee) are fully implemented and tested.
-Example workflows in the Main class demonstrate how the system works.
-Database screenshots are included to show the state at each step.
+OOP Principles: Proper encapsulation, modularity, and code organization.
+Code Quality: Readable and maintainable code with clear comments and exception handling.
+Completeness: Includes all CRUD operations and a working Main class for testing.
+GitHub Repository:
+Structured project with a README file.
+Includes example workflows and expected output.
