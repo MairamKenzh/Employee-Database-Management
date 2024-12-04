@@ -73,10 +73,13 @@ Run the SQL script above to create the employee table.
 ## Sample Screenshots
 ![Описание изображения](D1.png)
 ![Описание изображения](D2.png)
+### Adding Employee
 ![Описание изображения](D3.png)
 ![Описание изображения](D4.png)
+### Updating Employee
 ![Описание изображения](D5.png)
 ![Описание изображения](D6.png)
+### DeletE Employee
 ![Описание изображения](D7.png)
 ![Описание изображения](D8.png)
 
