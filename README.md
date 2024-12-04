@@ -1,116 +1,94 @@
-Employee Database Management System
-Project Description
-This Java application interacts with a PostgreSQL database to manage employee data using JDBC. It implements CRUD (Create, Read, Update, Delete) operations on an employee table. The application consists of two main classes:
+# Employee Database Management Application
+Description
+*his Java application interacts with a PostgreSQL relational database to manage employee data using JDBC. 
+It implements CRUD (Create, Read, Update, Delete) operations for an employee table and is structured with two main classes:*
 
-Employee: Represents an employee entity.
-EmployeeData: Handles database operations using JDBC.
-The program adheres to Object-Oriented Programming (OOP) principles, ensuring modularity and encapsulation.
+- Employee: Represents an employee entity with attributes like ID, name, position, salary, and hire date.
+- EmployeeData: Handles all database operations such as creating, reading, updating, and deleting employee records.
+  
+The project adheres to Object-Oriented Programming (OOP) principles, ensuring clean code, encapsulation, and maintainable design.
 
-Requirements
-Database Setup
-Create a database named employee_db in PostgreSQL.
-Create the employee table by running the following SQL script:
-sql
-Копировать код
-create table employee (
-    id serial primary key,
-    name varchar(100) not null,
-    position varchar(100) not null,
-    salary double precision not null,
-    hire_date date not null
-);
-Employee Class
-The Employee class contains the following fields:
 
-id (int): Unique identifier for each employee.
-name (String): Name of the employee.
-position (String): Job title of the employee.
-salary (double): Salary of the employee.
-hireDate (Date): Date the employee was hired.
-The class includes:
+## Database Setup
+Database Name: Employee_db
+![Описание изображения](D0.png)
 
-Constructors for creating Employee objects.
-Getters and setters for all fields.
-A toString() method for easy display of employee information.
-EmployeeData Class
-This class handles database interactions using JDBC. Key methods include:
+## Employee Class
+The Employee class includes the following fields:
 
-createEmployee: Adds a new employee to the database.
-java
-Копировать код
-int createEmployee(String name, String position, double salary, Date hireDate)
-getAllEmployees: Retrieves all employees from the database.
-java
-Копировать код
-ArrayList<Employee> getAllEmployees()
-getEmployeeById: Fetches a single employee by their ID.
-java
-Копировать код
-Employee getEmployeeById(int id)
-updateEmployee: Updates an employee's details.
-java
-Копировать код
-void updateEmployee(int id, String name, String position, double salary, Date hireDate)
-deleteEmployee: Deletes an employee from the database by their ID.
-java
-Копировать код
-void deleteEmployee(int id)
-How to Run the Program
-Clone or download the project:
-bash
-Копировать код
-git clone https://github.com/nurjamal505/Employee-Database-Management.git
-cd Employee-Database-Management
-Open the project in IntelliJ IDEA or another IDE.
-Update the database credentials in EmployeeData:
-java
-Копировать код
-String url = "jdbc:postgresql://localhost:5432/employee_db";
-String username = "your_username";
-String password = "your_password";
-Run the Main class.
-Example Workflow
-The Main class demonstrates the following:
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
+- id (int): A unique, auto-generated identifier.
+- name (String): The employee's full name.
+- position (String): The employee's job title.
+- salary (double): The employee's salary.
+- hireDate (Date): The date the employee was hired.
+  
+## Features of the Class:
+- Provides constructors for creating employee objects.
+- Implements getters and setters for each field.
+- Includes a toString() method for displaying employee information.
 
-View all employees:
-java
-Копировать код
-ArrayList<Employee> employees = employeeData.getAllEmployees();
-for (Employee emp : employees) {
-    System.out.println(emp);
-}
-Update an employee:
-java
-Копировать код
-employeeData.updateEmployee(
-    newEmployeeId, "Anna Kay", "Senior Designer", 85000.00, Date.valueOf("2023-12-01")
-);
-Delete an employee:
-java
-Копировать код
-employeeData.deleteEmployee(newEmployeeId);
-Expected Output
-After Adding an Employee:
-arduino
-Копировать код
-Employee{id=1, name='Anna Kay', position='Designer', salary=70000.0, hireDate=2024-12-01}
-After Updating the Employee:
-arduino
-Копировать код
-Employee{id=1, name='Anna Kay', position='Senior Designer', salary=85000.0, hireDate=2023-12-01}
-After Deletion:
-csharp
-Копировать код
-(No records found, the table is empty.)
-Evaluation Criteria
-OOP Principles: Proper encapsulation, modularity, and code organization.
-Code Quality: Readable and maintainable code with clear comments and exception handling.
-Completeness: Includes all CRUD operations and a working Main class for testing.
-GitHub Repository:
-Structured project with a README file.
-Includes example workflows and expected output.
+## EmployeeData Class
+The EmployeeData class manages CRUD operations through JDBC and includes methods for:
+
+Create Employee: Adds a new employee to the database.
+- Method: createEmployee(Employee employee)
+- Read Employee by ID: Fetches a specific employee's details using their unique ID.
+- Method: getEmployeeById(int id)
+- Read All Employees: Retrieves a list of all employees in the database.
+- Method: getAllEmployees()
+- Update Employee: Updates details of an existing employee.
+- Method: updateEmployee(Employee employee)
+- Delete Employee: Deletes an employee from the database by ID.
+- Method: deleteEmployee(int id)
+
+## Database Connection:
+The class uses JDBC to establish and manage the connection to the PostgreSQL database. Resources are managed effectively using try-catch blocks and proper closing mechanisms
+
+## How to Run
+Prerequisites
+Install PostgreSQL and create the database Employee_db.
+Run the SQL script above to create the employee table.
+
+## Example Workflow
+1. Create Employees:
+   Add employees (e.g., John Lee and Cindy Smith) to the database.
+2. Retrieve Employee Details:
+   Fetch and display details for a specific employee by ID.
+4. Update Employees:
+   Update the job title and salary for an existing employee.
+4. Delete Employees:
+   Remove a specific employee by their ID.
+
+## Expected Output
+# Before Running
+- The employee table is empty.
+## After Running
+1. Added Employees:
+   Two new employees (e.g., John Lee and Cindy Smith) appear in the database.
+2. Updated Employee:
+   One employee's details are updated with a new position and salary.
+3. Deleted Employee:
+   One employee is removed from the database, and the table is updated accordingly.
+
+## Sample Screenshots
+![Описание изображения](D1.png)
+![Описание изображения](D2.png)
+![Описание изображения](D3.png)
+![Описание изображения](D4.png)
+![Описание изображения](D5.png)
+![Описание изображения](D6.png)
+![Описание изображения](D7.png)
+![Описание изображения](D8.png)
+
+## Evaluation Criteria
+1. OOP Principles:
+Encapsulation, constructors, and getters/setters are effectively used.
+2. Code Quality:
+The code is clean, follows best practices, and includes proper exception handling.
+3. Functional Completeness:
+All CRUD operations are implemented and tested.
+4. Repository Quality:
+Includes a descriptive README with setup instructions and example workflows.
+
+
+*This project demonstrates how to use Java to interact with relational databases through JDBC. It provides a strong foundation for understanding database management, OOP, and Java application development.*
